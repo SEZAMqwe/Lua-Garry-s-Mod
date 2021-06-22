@@ -1,0 +1,5 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/susanoo_shisui/susanno_shisui_crystal"
+	"$additive" 1
+}
