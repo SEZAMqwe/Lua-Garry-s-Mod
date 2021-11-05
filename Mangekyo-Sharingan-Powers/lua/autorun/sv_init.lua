@@ -1,6 +1,25 @@
-local function tp(plr,pos)
---if (CLIENT) then return end
-plr:SetPos(pos)
+if SERVER then
+	
+	local files = file.Find( 'server/*.lua', 'LUA' )
+	table.foreach( files, function( key, gui )
+		include( 'server/' .. gui )
+	end )
+	
+	local files = file.Find( 'client/*.lua', 'LUA' )
+	table.foreach( files, function( key, gui )
+		AddCSLuaFile( 'client/' .. gui )
+	end )
+	
+end
+	
+	
+if CLIENT then
+
+	local files = file.Find( 'client/*.lua', 'LUA' )
+	table.foreach( files, function( key, gui )
+		include( 'client/' .. gui )
+	end )
+	
 end
 
 local function Amat(plr,user)
@@ -20,6 +39,4 @@ local function Amat(plr,user)
 		plr:TakeDamage(1,user)
 	end
 end
-
-hook.Add("kamui","tpPlayerKamui",tp)
 hook.Add("Amaterasu","Effect", Amat)
